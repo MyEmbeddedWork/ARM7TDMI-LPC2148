@@ -1,3 +1,5 @@
+/* Author - Anil Joseph */
+
 /*
  * Default linker script for LPC2148-ARM7TDMI		.
  * 
