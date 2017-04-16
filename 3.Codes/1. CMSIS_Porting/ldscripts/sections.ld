@@ -1,7 +1,5 @@
-/* Author - Anil Joseph */
-
 /*
- * Default linker script for LPC2148-ARM7TDMI		.
+ * Default linker script for Cortex-M (it includes specifics for STM32F[34]xx).
  * 
  * To make use of the multi-region initialisations, define
  * OS_INCLUDE_STARTUP_INIT_MULTIPLE_RAM_SECTIONS for the _startup.c file.
@@ -20,7 +18,7 @@ _estack = __stack; 	/* STM specific definition */
  * for the different modes.
  */
 
-__Main_Stack_Size = 4096;
+__Main_Stack_Size = 1024 ;
 
 PROVIDE ( _Main_Stack_Size = __Main_Stack_Size ) ;
 
@@ -34,7 +32,7 @@ PROVIDE ( _Main_Stack_Limit = __Main_Stack_Limit ) ;
  * There will be a link error if there is not this amount of 
  * RAM free at the end. 
  */
-_Minimum_Stack_Size = 512 ;
+_Minimum_Stack_Size = 256 ;
 
 /*
  * Default heap definitions.
@@ -67,7 +65,7 @@ SECTIONS
         __vectors_start__ = ABSOLUTE(.) ; /* STM specific definition */
         KEEP(*(.isr_vector))     	/* Interrupt vectors */
         
-		/*KEEP(*(.cfmconfig))*/			/* Freescale configuration words */   
+		KEEP(*(.cfmconfig))			/* Freescale configuration words */   
 		     
         /* 
          * This section is here for convenience, to store the
